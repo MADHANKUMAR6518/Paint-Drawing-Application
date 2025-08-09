@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Drawing App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Drawing App</h1>
+            <div class="file-actions">
+                <button id="new-page" title="New Page"><i class="fas fa-file"></i> New</button>
+                <button id="save-page" title="Save Page"><i class="fas fa-save"></i> Save</button>
+                <button id="open-page" title="Open Page"><i class="fas fa-folder-open"></i> Open</button>
+                <button id="delete-page" title="Delete Page"><i class="fas fa-trash"></i> Delete</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="toolbar">
+                <div class="tool-section">
+                    <h3>Tools</h3>
+                    <div class="tool-options">
+                        <button class="tool-btn active" id="pencil" title="Pencil (P)"><i class="fas fa-pencil-alt"></i></button>
+                        <button class="tool-btn" id="brush" title="Brush (B)"><i class="fas fa-paint-brush"></i></button>
+                        <button class="tool-btn" id="eraser" title="Eraser (E)"><i class="fas fa-eraser"></i></button>
+                        <button class="tool-btn" id="text" title="Text (T)"><i class="fas fa-font"></i></button>
+                        <button class="tool-btn" id="shape" title="Shapes (S)"><i class="fas fa-shapes"></i></button>
+                    </div>
+                </div>
+
+                <div class="tool-section" id="color-section">
+                    <h3>Colors</h3>
+                    <input type="color" id="primary-color" value="#000000">
+                    <input type="color" id="secondary-color" value="#ffffff">
+                    <div class="color-palette">
+                        <!-- Colors will be added by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="tool-section" id="brush-size-section">
+                    <h3>Brush Size</h3>
+                    <input type="range" id="brush-size" min="1" max="50" value="5">
+                    <span id="brush-size-value">5px</span>
+                </div>
+
+                <div class="tool-section" id="shape-section" style="display: none;">
+                    <h3>Shapes</h3>
+                    <div class="shape-options">
+                        <!-- Shapes will be added by JavaScript -->
+                    </div>
+                    <div class="shape-properties">
+                        <label>
+                            <input type="checkbox" id="fill-shape"> Fill Shape
+                        </label>
+                    </div>
+                </div>
+
+                <div class="tool-section" id="text-section" style="display: none;">
+                    <h3>Text Options</h3>
+                    <input type="text" id="text-input" placeholder="Enter text">
+                    <select id="font-family">
+                        <option value="Arial">Arial</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                    <input type="number" id="font-size" min="8" max="72" value="16">
+                </div>
+
+                <div class="tool-section">
+                    <h3>Paint Styles</h3>
+                    <select id="paint-style">
+                        <option value="solid">Solid</option>
+                        <option value="dashed">Dashed</option>
+                        <option value="dotted">Dotted</option>
+                        <option value="double">Double</option>
+                        <option value="groove">Groove</option>
+                        <option value="ridge">Ridge</option>
+                    </select>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="undo" title="Undo (Ctrl+Z)"><i class="fas fa-undo"></i> Undo</button>
+                    <button id="redo" title="Redo (Ctrl+Y)"><i class="fas fa-redo"></i> Redo</button>
+                    <button id="clear" title="Clear Canvas"><i class="fas fa-trash-alt"></i> Clear</button>
+                </div>
+            </aside>
+
+            <main class="canvas-container">
+                <canvas id="drawing-canvas"></canvas>
+                <div id="text-layer" style="display: none;"></div>
+            </main>
+        </div>
+
+        <div class="page-management">
+            <div class="page-thumbnails" id="page-thumbnails">
+                <!-- Page thumbnails will be added by JavaScript -->
+            </div>
+            <button id="add-page" title="Add New Page"><i class="fas fa-plus"></i> Add Page</button>
+        </div>
+    </div>
+
+    <!-- Modal for saving/opening pages -->
+    <div id="page-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Save Drawing</h2>
+            <input type="text" id="page-name" placeholder="Enter drawing name">
+            <div id="saved-pages-list">
+                <!-- Saved pages will be listed here -->
+            </div>
+            <button id="modal-action-btn">Save</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
